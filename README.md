@@ -1,60 +1,103 @@
-# cosmopolitan 
+# Cosmopolitan in docker 
 
 # TL;DR 
-Compiles all example programs from https://github.com/jart/cosmopolitan which can be executed in linux, mac, windows, FreeBSD, OpenBSD, you can even boot it on bare metal!
+Compiles all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) where each inidividual binary can be executed in linux, mac, windows, FreeBSD, OpenBSD and you can even boot it n qemu or install it on bare metal!
 
-This repository puts all the executables in a docker container called 'marcelmaatkamp/osmopolitan:1.0'
-
-# Longer description
-Cosmopolitan Libc makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable.
+# Description
+[Cosmopolitan Libc](https://github.com/jart/cosmopolitan) describes itself as: "makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable."
 
 # build
 ```
 $ docker-compose up --build &&\
   sudo chown -R ${USER} data/* 
+``
 
-$ ./data/application/third_party/sqlite3/sqlite3.com 
+# Examples
 
-  SQLite version 3.35.5 2021-04-19 18:32:05
-  Enter ".help" for usage hints.
-  Connected to a transient in-memory database.
-  Use ".open FILENAME" to reopen on a persistent database.
-  sqlite>
+## hello-world
+
+### docker
 ```
-This will build `marcelmaatkamp/cosmopolitan:1.0` and will make a copy of all the executables in `data/`
+% docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c /application/examples/hello.com
+hello world
+``
 
-# linux
+### linux
 ```
-$ data/application/third_party/sqlite3/sqlite3.com
+$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\ 
+  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
+  ${PWD}/cosmopolitan/examples/hello.com 
+
+  hello world
+```
+
+### mac 
+```
+$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
+  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
+  sh ${PWD}/cosmopolitan/examples/hello.com
+
+  hello world
+```
+
+### qemu
+```
+$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
+  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
+  qemu-system-x86_64 -m 16 -nographic -fda ${PWD}/cosmopolitan/examples/hello.com
+
+SeaBIOS (version rel-1.14.0-0-g155821a1990b-prebuilt.qemu.org)
+
+iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+00F8F290+00EEF290 CA00
+
+Booting from Hard Disk...
+Boot failed: could not read the boot disk
+
+Booting from Floppy...
+hello world
+```
+
+## sqlite 
+
+### docker 
+```
+$ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c third_party/sqlite3/sqlite3.com
 SQLite version 3.35.5 2021-04-19 18:32:05
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
 Use ".open FILENAME" to reopen on a persistent database.
-sqlite> 
+sqlite>
 ```
 
-# mac
+### linux
 ```
-% sh data/application/third_party/sqlite3/sqlite3.com
+$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
+  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
+  ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
 SQLite version 3.35.5 2021-04-19 18:32:05
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
 Use ".open FILENAME" to reopen on a persistent database.
-sqlite> 
+sqlite>
+```
+
+### mac
+```
+$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
+  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
+  sh ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
+SQLite version 3.35.5 2021-04-19 18:32:05
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>
 ```
 
 # qemu
 ```
-$ wget https://justine.lol/cosmopolitan/deathstar.c
-$ wget https://justine.lol/cosmopolitan/cosmopolitan.zip
-$ unzip -o cosmopolitan.zip
-$ gcc -static -nostdlib -nostdinc -fno-pie -no-pie -mno-red-zone \
-    -fno-omit-frame-pointer \
-    -o deathstar.com.dbg deathstar.c -fuse-ld=bfd -Wl,-T,ape.lds \
-    -include cosmopolitan.h crt.o ape.o cosmopolitan.a
-$ objcopy -S -O binary deathstar.com.dbg deathstar.com
-$ ./deathstar.com
-$ qemu-system-x86_64 -m 16 -nographic -fda deathstar.com
+$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
+  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
+  qemu-system-x86_64 -m 16 -nographic -fda ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
 ```
 
 # files
