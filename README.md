@@ -11,13 +11,15 @@ Cosmopolitan Libc makes C a build-once run-anywhere language, like Java, except 
 # build
 ```
 $ docker-compose up --build &&\
-  sudo chown -R ${USER} data/* &&\
-  ./data/application/third_party/sqlite3/sqlite3.com 
+  sudo chown -R ${USER} data/* 
 
-  > SQLite version 3.35.5 2021-04-19 18:32:05
-  > Enter ".help" for usage hints.
-  > Connected to a transient in-memory database.
-  > Use ".open FILENAME" to reopen on a persistent database.
+$ ./data/application/third_party/sqlite3/sqlite3.com 
+
+  SQLite version 3.35.5 2021-04-19 18:32:05
+  Enter ".help" for usage hints.
+  Connected to a transient in-memory database.
+  Use ".open FILENAME" to reopen on a persistent database.
+  sqlite>
 ```
 This will build `marcelmaatkamp/cosmopolitan:1.0` and will make a copy of all the executables in `data/`
 
@@ -39,6 +41,20 @@ Enter ".help" for usage hints.
 Connected to a transient in-memory database.
 Use ".open FILENAME" to reopen on a persistent database.
 sqlite> 
+```
+
+# qemu
+```
+$ wget https://justine.lol/cosmopolitan/deathstar.c
+$ wget https://justine.lol/cosmopolitan/cosmopolitan.zip
+$ unzip -o cosmopolitan.zip
+$ gcc -static -nostdlib -nostdinc -fno-pie -no-pie -mno-red-zone \
+    -fno-omit-frame-pointer \
+    -o deathstar.com.dbg deathstar.c -fuse-ld=bfd -Wl,-T,ape.lds \
+    -include cosmopolitan.h crt.o ape.o cosmopolitan.a
+$ objcopy -S -O binary deathstar.com.dbg deathstar.com
+$ ./deathstar.com
+$ qemu-system-x86_64 -m 16 -nographic -fda deathstar.com
 ```
 
 # files
