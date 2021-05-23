@@ -1,0 +1,10 @@
+version: '2'
+services:
+ cosmopolitan:
+  image: marcelmaatkamp/cosmopolitan/hello-world:1.0
+  build: .
+# command: ash -c /application/hello-world.com
+  entrypoint: ash
+  command: -c 'cp /application/hello-world.com /data'
+  volumes:
+   - ./data:/data
