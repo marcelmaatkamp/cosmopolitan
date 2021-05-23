@@ -2,7 +2,10 @@ version: '2'
 services:
  cosmopolitan:
   image: marcelmaatkamp/cosmopolitan:1.0
-  build: .
+  build: 
+   context: .
+   args:
+    MODE: ${MODE}
   entrypoint: ash
   command: -c 'cp -r /application/ /data'
   volumes:
