@@ -1,22 +1,30 @@
 FROM gcc:11 as gcc
+RUN apt-get update && \
+    apt-get -y install \
+     wget \
+     git \
+     zip \
+     unzip &&\
+    rm -rf /var/lib/apt/lists/*
 WORKDIR /build
 RUN \
  git clone https://github.com/jart/cosmopolitan &&\
  cd cosmopolitan &&\
+ git checkout 1.0 &&\
  make 
+
 RUN \
- for dbg_file in $(ls o/examples) ;\
- do \
-  file=${dbg_file/.dbg//}; \
-  echo ${file}; \
-  objcopy -S -O binary ${file}.dbg ${file}; \
- done
+ mkdir -p \
+  /application/examples \
+  /application/third_party &&\
+ cp $(find /build/cosmopolitan/o/examples/ -name *.com) /application/examples &&\
+ cp $(find /build/cosmopolitan/o/third_party/ -name *.com) /application/third_party
 
 FROM alpine
 WORKDIR /application
 COPY \
  --from=gcc \
-  /build/cosmopolitan/o/examples \
-  /application/examples_dbg
- 
-ENTRYPOINT /application/hello-world.com
+ /application \
+ /application
+  
+
