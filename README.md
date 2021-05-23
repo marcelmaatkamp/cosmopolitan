@@ -21,6 +21,26 @@ $ docker-compose up --build &&\
 ```
 This will build `marcelmaatkamp/cosmopolitan:1.0` and will make a copy of all the executables in `data/`
 
+# linux
+```
+$ data/application/third_party/sqlite3/sqlite3.com
+SQLite version 3.35.5 2021-04-19 18:32:05
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> 
+```
+
+# mac
+```
+% sh data/application/third_party/sqlite3/sqlite3.com
+SQLite version 3.35.5 2021-04-19 18:32:05
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> 
+```
+
 # files
 ```
 ./examples

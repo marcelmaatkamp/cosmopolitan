@@ -20,7 +20,8 @@ RUN \
 
 WORKDIR /build/cosmopolitan
 RUN \
- make -j12 MODE=${mode}
+ make -O
+#make -j12 MODE=${mode}
 
 RUN \
  rsync \
