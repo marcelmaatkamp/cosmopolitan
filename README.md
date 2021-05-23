@@ -57,6 +57,7 @@ hello world
 ### docker 
 ```
 $ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c third_party/sqlite3/sqlite3.com
+
 SQLite version 3.35.5 2021-04-19 18:32:05
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
@@ -69,6 +70,7 @@ sqlite>
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
   ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
+
 SQLite version 3.35.5 2021-04-19 18:32:05
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
@@ -81,6 +83,7 @@ sqlite>
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
   sh ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
+
 SQLite version 3.35.5 2021-04-19 18:32:05
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
@@ -89,6 +92,7 @@ sqlite>
 ```
 
 # qemu
+(This does not seem to work, I think sqlite is too clever and wants to do something special with the terminal and crashes, but maybe qemu-system-x86_64 has an option to make this work which is something to be tried out)
 ```
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
@@ -96,12 +100,15 @@ $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp 
 ```
 
 # build
+If you want to compile the examples yourself just use the following command-line:
 ```
 $ docker-compose up --build &&\
-  sudo chown -R ${USER} data/*
+  sudo chown -R ${USER} ${PWD}/data/*
 ```
+All the example files will be in '${PWD}/data/'
 
 # files
+These are the all the multi-arch files:
 ```
 ./examples
 ./examples/lstime.com
