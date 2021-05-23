@@ -15,7 +15,7 @@ These are examples on how to run the executables. In the section 'files' you can
 ```
 % docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c /application/examples/hello.com
 hello world
-``
+```
 
 ### linux
 ```
