@@ -6,13 +6,8 @@ Compiles all example programs from [Cosmopolitan Libc](https://github.com/jart/c
 # Description
 [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) describes itself as: "makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable."
 
-# build
-```
-$ docker-compose up --build &&\
-  sudo chown -R ${USER} data/* 
-``
-
 # Examples
+These are examples on how to run the executables. In the section 'files' you can find all the possible example files but I've described a few examples (hello-world and sqlite) on how to run those on multiple platforms.
 
 ## hello-world
 
@@ -98,6 +93,12 @@ sqlite>
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
   qemu-system-x86_64 -m 16 -nographic -fda ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
+```
+
+# build
+```
+$ docker-compose up --build &&\
+  sudo chown -R ${USER} data/*
 ```
 
 # files
