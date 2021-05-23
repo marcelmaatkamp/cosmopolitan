@@ -8,11 +8,18 @@ This repository puts all the executables in a docker container called 'marcelmaa
 # Longer description
 Cosmopolitan Libc makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable.
 
-# 
-# usage
+# build
 ```
-$ docker run --rm -ti marcelmaatkamp/cosmopolitan:1.0 ash
+$ docker-compose up --build &&\
+  sudo chown -R ${USER} data/* &&\
+  ./data/application/third_party/sqlite3/sqlite3.com 
+
+  > SQLite version 3.35.5 2021-04-19 18:32:05
+  > Enter ".help" for usage hints.
+  > Connected to a transient in-memory database.
+  > Use ".open FILENAME" to reopen on a persistent database.
 ```
+This will build `marcelmaatkamp/cosmopolitan:1.0` and will make a copy of all the executables in `data/`
 
 # files
 ```
