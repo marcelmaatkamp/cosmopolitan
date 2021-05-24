@@ -5,7 +5,7 @@ do
  echo "| ------ |"
  for file in `find data/application/${dir} -name '*.com'`
  do
-  echo "| [${file/data\/application\//}](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
+  echo "| [${file/data\/application\//}](https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
  done
  echo
 done
