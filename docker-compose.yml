@@ -8,6 +8,6 @@ services:
     MODE: ${MODE}
     workdir: cosmopolitan
   entrypoint: ash
-  command: -c 'cp -r /build/cosmopolitan/build /data'
+  command: -c 'cp -r /cosmopolitan/build /data'
   volumes:
    - ./binaries:/data

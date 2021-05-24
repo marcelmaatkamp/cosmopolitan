@@ -1,0 +1,22 @@
+#!/bin/bash
+docker run --rm -ti \
+ -w /build/cosmopolitan \
+ -v ${PWD}/binaries:/binaries \
+ marcelmaatkamp/cosmopolitan:1.0 bash -c '\
+  rsync -qmzarv \
+   --include="*/" \
+   --include="*."{com,dbg} \
+   --exclude="*" \
+   --prune-empty-dirs \
+  /build/cosmopolitan/o/ /binaries'
+
+for dir in $(echo examples third_party tool build test)
+do
+ echo "| ${dir} |"
+ echo "| ------ |"
+ for file in `find binaries/${dir} -name '*.com'`
+ do
+  echo "| [${file/data\/application\//}](https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
+ done
+ echo
+done
