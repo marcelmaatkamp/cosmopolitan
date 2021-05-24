@@ -6,7 +6,8 @@ services:
    context: .
    args:
     MODE: ${MODE}
+    workdir: cosmopolitan
   entrypoint: ash
-  command: -c 'cp -r /application/ /data'
+  command: -c 'cp -r /build/cosmopolitan/build /data'
   volumes:
-   - ./data:/data
+   - ./binaries:/data

@@ -1,6 +1,4 @@
-ARG mode=rel
-
-FROM gcc:11 as gcc
+FROM gcc:11 
 
 RUN \
  apt-get update && \
@@ -20,22 +18,25 @@ RUN \
 
 WORKDIR /build/cosmopolitan
 RUN \
- make -O
-#make -j12 MODE=${mode}
-
-RUN \
- rsync \
-  -qmzarv \
-  --include="*/" \
-  --include="*.com" \
-  --exclude="*" \
-  /build/cosmopolitan/o/ /application
-
-FROM alpine
-WORKDIR /application
-COPY \
- --from=gcc \
- /application/ \
- /application/
-  
-
+ bash -c '\
+  make -O; \
+  for mode in dbg opt rel tiny; \
+  do \
+   make -O MODE=${mode}; \
+  done;\
+ '
+# RUN \
+#  rsync \
+#   -qmzarv \
+#   --include="*/" \
+#   --include='*.'{com,dbg} \
+#   --exclude="*" \
+#   --prune-empty-dirs \
+#   /build/cosmopolitan/o/ /cosmopolitan
+# 
+# FROM alpine
+# WORKDIR /application
+# COPY \
+#  --from=gcc \
+#  /cosmopolitan/ \
+#  /cosmopolitan/
