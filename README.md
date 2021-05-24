@@ -1,7 +1,7 @@
 # Cosmopolitan in docker 
 
 # TL;DR 
-Compiles all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) n a docker container (marcelmaatkamp/cosmopolitan)[https://hub.docker.com/r/marcelmaatkamp/cosmopolitan] where each individual binary can be executed multiple platforms like linux, mac, windows, FreeBSD, OpenBSD and you can even boot it in qemu or on bare metal.
+Compiles all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) in a docker container [marcelmaatkamp/cosmopolitan](https://hub.docker.com/r/marcelmaatkamp/cosmopolitan) where each individual binary can be executed multiple platforms like linux, mac, windows, FreeBSD, OpenBSD and you can even boot it in qemu or on bare metal.
 
 # Description
 [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) describes itself as: "makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable."
