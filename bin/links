@@ -1,5 +1,8 @@
 #!/bin/bash
-for file in `find data -name '*.com'`
+for dir in $(echo examples third_party tool build test)
 do
- echo "| [${file/data\/application\//}](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
+ for file in `find data/application/${dir} -name '*.com'`
+ do
+  echo "| [${file/data\/application\//}](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
+ done
 done
