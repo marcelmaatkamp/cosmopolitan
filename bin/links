@@ -1,5 +1,5 @@
 #!/bin/bash
 for file in `find data -name '*.com'`
 do
- echo "[${file/data\/application\///}](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file})"
+ echo "| [${file/data\/application\///}](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
 done
