@@ -108,8 +108,9 @@ $ docker-compose up --build &&\
 ```
 
 # files
-| files | 
-| -- | 
+
+| examples |
+| ------ |
 | [examples/date.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/examples/date.com) |
 | [examples/nesemu1.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/examples/nesemu1.com) |
 | [examples/walk.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/examples/walk.com) |
@@ -151,6 +152,9 @@ $ docker-compose up --build &&\
 | [examples/package/program.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/examples/package/program.com) |
 | [examples/auto-launch-gdb-on-crash.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/examples/auto-launch-gdb-on-crash.com) |
 | [examples/ttyinfo.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/examples/ttyinfo.com) |
+
+| third_party |
+| ------ |
 | [third_party/chibicc/test/pragma-once_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/third_party/chibicc/test/pragma-once_test.com) |
 | [third_party/chibicc/test/dce_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/third_party/chibicc/test/dce_test.com) |
 | [third_party/chibicc/test/attribute_test2.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/third_party/chibicc/test/attribute_test2.com) |
@@ -242,6 +246,9 @@ $ docker-compose up --build &&\
 | [third_party/quickjs/unicode_gen.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/third_party/quickjs/unicode_gen.com) |
 | [third_party/lua/lua.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/third_party/lua/lua.com) |
 | [third_party/sqlite3/sqlite3.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/third_party/sqlite3/sqlite3.com) |
+
+| tool |
+| ------ |
 | [tool/net/redbean.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/net/redbean.com) |
 | [tool/net/dig.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/net/dig.com) |
 | [tool/net/echoserver.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/net/echoserver.com) |
@@ -317,11 +324,17 @@ $ docker-compose up --build &&\
 | [tool/build/refactor.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/build/refactor.com) |
 | [tool/build/x86combos.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/build/x86combos.com) |
 | [tool/build/mkdeps.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/build/mkdeps.com) |
+
+| build |
+| ------ |
 | [build/bootstrap/zipobj.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/build/bootstrap/zipobj.com) |
 | [build/bootstrap/ar.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/build/bootstrap/ar.com) |
 | [build/bootstrap/package.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/build/bootstrap/package.com) |
 | [build/bootstrap/compile.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/build/bootstrap/compile.com) |
 | [build/bootstrap/mkdeps.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/build/bootstrap/mkdeps.com) |
+
+| test |
+| ------ |
 | [test/libc/calls/ftruncate_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/libc/calls/ftruncate_test.com) |
 | [test/libc/calls/fork_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/libc/calls/fork_test.com) |
 | [test/libc/calls/lseek_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/libc/calls/lseek_test.com) |
@@ -576,3 +589,4 @@ $ docker-compose up --build &&\
 | [test/tool/build/lib/bsu_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/tool/build/lib/bsu_test.com) |
 | [test/tool/build/lib/divmul_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/tool/build/lib/divmul_test.com) |
 | [test/tool/build/lib/numbers.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/tool/build/lib/numbers.com) |
+
