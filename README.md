@@ -109,7 +109,7 @@ $ docker-compose up --build &&\
 
 # files
 These are the all the multi-arch files:
-
+```
 [/test/libc/calls/ftruncate_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/libc/calls/ftruncate_test.com)
 [/test/libc/calls/fork_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/libc/calls/fork_test.com)
 [/test/libc/calls/lseek_test.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/test/libc/calls/lseek_test.com)
@@ -576,3 +576,4 @@ These are the all the multi-arch files:
 [/tool/build/refactor.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/build/refactor.com)
 [/tool/build/x86combos.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/build/x86combos.com)
 [/tool/build/mkdeps.com](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/data/application/tool/build/mkdeps.com)
+```
