@@ -1,22 +1,22 @@
 #!/bin/bash
-docker run --rm -ti \
- -w /build/cosmopolitan \
- -v ${PWD}/binaries:/binaries \
- marcelmaatkamp/cosmopolitan:1.0 bash -c '\
-  rsync -qmzarv \
-   --include="*/" \
-   --include="*."{com,dbg} \
-   --exclude="*" \
-   --prune-empty-dirs \
-  /build/cosmopolitan/o/ /binaries'
 
-for dir in $(echo examples third_party tool build test)
+loc_dist=binaries/dist
+loc_rel=binaries/rel
+loc_tiny=binaries/tiny
+loc_dbg=binaries/dbg
+
+for type in $(echo examples third_party tool build test)
 do
- echo "| ${dir} |"
- echo "| ------ |"
- for file in `find binaries/${dir} -name '*.com'`
+ echo "| ${type} | dist | release | tiny | debug |"
+ echo "| ------ | "
+ for file in `find binaries/dist/${type}/ -name '*.com'`
  do
-  echo "| [${file/data\/application\//}](https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) |"
+  echo -n "| ${file} "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/dist/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/rel/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/tiny/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/dbg/${file}) "
+  echo "|"
  done
  echo
 done
