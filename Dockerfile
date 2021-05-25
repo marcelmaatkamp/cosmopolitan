@@ -13,8 +13,7 @@ RUN \
 WORKDIR /
 RUN \
  git clone https://github.com/jart/cosmopolitan &&\
- cd cosmopolitan &&\
- git checkout 1.0 
+ cd cosmopolitan 
 
 WORKDIR /cosmopolitan
 RUN \
