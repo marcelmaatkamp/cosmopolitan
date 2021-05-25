@@ -15,7 +15,7 @@ do
   echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file}) "
   echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file/dist/rel/}) "
   echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file/dist/tiny/}) "
-  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file/dist/test/}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/${file/dist/dbg/}) "
   echo "|"
  done
  echo
