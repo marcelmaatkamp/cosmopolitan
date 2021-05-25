@@ -4,6 +4,10 @@ This is the already compiled build environment for [Cosmopolitan Libc](https://g
 # TL;DR 
 This repository and its resulting docker container compiles the cosmopolitan libraries and all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) in a docker container [marcelmaatkamp/cosmopolitan](https://hub.docker.com/r/marcelmaatkamp/cosmopolitan) where each individual [example binary](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist/examples) can be executed on multiple platforms like linux, mac, windows, FreeBSD, OpenBSD and you can even boot them in qemu or run on bare metal.
 
+See for example how to run a [nes emulator](https://justine.lol/nesemu1.html):
+
+https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d-d8981d7ea7a6.mp4
+
 # Description
 [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) describes itself as: "makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable."
 
