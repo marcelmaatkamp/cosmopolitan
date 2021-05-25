@@ -1,5 +1,5 @@
 # Cosmopolitan in docker 
-This is the already compiled build environment for [Cosmopolitan Libc](https://github.com/jart/cosmopolitan in a docker container (marcelmaatkamp/cosmopolitan) which can be used as a base image to compile your own cosmoplitan software packages, for example [this lua package](https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan-lua/main/Dockerfile).
+This is the already compiled build environment for [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) in a docker container [marcelmaatkamp/cosmopolitan](https://hub.docker.com/repository/docker/marcelmaatkamp/cosmopolitan) which can be used as a base image to compile your own cosmoplitan software packages, for example [this lua package](https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan-lua/main/Dockerfile).
 
 # TL;DR 
 This repository and its resulting docker container compiles the cosmopolitan libraries and all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) in a docker container [marcelmaatkamp/cosmopolitan](https://hub.docker.com/r/marcelmaatkamp/cosmopolitan) where each individual [example binary](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist/examples) can be executed on multiple platforms like linux, mac, windows, FreeBSD, OpenBSD and you can even boot them in qemu or run on bare metal.
