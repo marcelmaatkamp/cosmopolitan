@@ -8,14 +8,14 @@ loc_dbg=binaries/dbg
 for type in $(echo examples third_party tool build test)
 do
  echo "| ${type} | dist | release | tiny | debug |"
- echo "| ------ | "
+ echo "| --- | --- | --- | --- | --- |"
  for file in `find binaries/dist/${type}/ -name '*.com'`
  do
   echo -n "| ${file} "
-  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/dist/${file}) "
-  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/rel/${file}) "
-  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/tiny/${file}) "
-  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/blob/main/binaries/dbg/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dist/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/rel/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/tiny/${file}) "
+  echo -n "| [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dbg/${file}) "
   echo "|"
  done
  echo
