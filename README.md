@@ -16,15 +16,15 @@ The simpelest example: hello world.
 
 ### docker 
 ```
-% docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c /application/examples/hello.com
+$ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c o/examples/hello.com
 
 hello world
 ```
 
 #### Dockerfile
-You can include these binaries into an empty container and start that
+Since these binaries are statically linked and thus contain everything they need, you can include these binaries into an empty container
 
-```
+```Dockerfile
 FROM scratch
 COPY binaries/dist/examples/hello.com.dbg /hello.com
 CMD ["/hello.com"]
