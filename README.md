@@ -8,9 +8,6 @@ See for example how to run a [nes emulator](https://justine.lol/nesemu1.html):
 
 https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d-d8981d7ea7a6.mp4
 
-# Description
-[Cosmopolitan Libc](https://github.com/jart/cosmopolitan) describes itself as: "makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable."
-
 # Examples
 These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
@@ -68,11 +65,15 @@ hello world
 ### mac
 ```
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
+
+hello world
 ```
 
 ### linux
 ```
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
+
+hello world
 ```
 
 ### qemu
