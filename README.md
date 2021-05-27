@@ -18,37 +18,42 @@ These are examples on how to run the executables. In the section [files](#files)
 
 ### windows 
 ```
-C:..> curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/data/application/examples/hello.com -o hello.com && hello.com
+C:..> curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && hello.com
 
 hello world
 ```
 
-### docker
+### mac
+```
+$ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
+```
+
+### linux
+```
+$ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
+```
+
+### docker (alpine linux)
 ```
 % docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c /application/examples/hello.com
 
 hello world
 ```
 
-### linux
-```
-$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\ 
-  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
-  ${PWD}/cosmopolitan/examples/hello.com 
-
-  hello world
-```
-
-### mac 
-```
-$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
-  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
-  sh ${PWD}/cosmopolitan/examples/hello.com
-
-  hello world
-```
-
 ### qemu
+```
+$ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com &&\
+  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/cosmopolitan/examples/hello.com
+
+hello world
+```
+
+#### mac/linux
+```
+$ 
+```
+
+#### docker 
 ```
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
@@ -65,11 +70,11 @@ Booting from Floppy...
 hello world
 ```
 
-## sqlite 
+## nesemu
 
 ### windows
 ```
-C:..> curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/data/application/third_party/sqlite3/sqlite3.com -o sqlite3.com && sqlite3.com
+C:..> curl -sq https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dist/examples/nesemu1.com -o nesemu1.com && nesemu.com
 ```
 This binary seems to be not 64-bits compatible!
 
