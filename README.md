@@ -12,9 +12,51 @@ https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d
 [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) describes itself as: "makes C a build-once run-anywhere language, like Java, except it doesn't need an interpreter or virtual machine. Instead, it reconfigures stock GCC and Clang to output a POSIX-approved polyglot format that runs natively on Linux + Mac + Windows + FreeBSD + OpenBSD + NetBSD + BIOS with the best possible performance and the tiniest footprint imaginable."
 
 # Examples
-These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same.
+These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
 ## hello-world
+The simpelest example: hello world. 
+
+### docker 
+```
+% docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c /application/examples/hello.com
+
+hello world
+```
+
+#### Dockerfile
+You can include these binaries into an empty container and start that
+
+```
+FROM scratch
+COPY binaries/dist/examples/hello.com.dbg /hello.com
+CMD ["/hello.com"]
+```
+
+#### build
+```
+% docker build -t cosmopolitain/hello-world . --no-cache &&\
+  docker run cosmopolitain/hello-world
+
+[+] Building 0.2s (5/5) FINISHED                                                                                                                                                                          
+ => [internal] load build definition from Dockerfile                                                                                                                                                 0.0s
+ => => transferring dockerfile: 127B                                                                                                                                                                 0.0s
+ => [internal] load .dockerignore                                                                                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                                                                                      0.0s
+ => [internal] load build context                                                                                                                                                                    0.0s
+ => => transferring context: 162B                                                                                                                                                                    0.0s
+ => [1/1] COPY binaries/tiny/examples/hello.com.dbg /hello.com                                                                                                                                       0.0s
+ => exporting to image                                                                                                                                                                               0.0s
+ => => exporting layers                                                                                                                                                                              0.0s
+ => => writing image sha256:2a76df015807f71644232c4bf164302dbc818125edc903598ced36c3cc581d51                                                                                                         0.0s
+ => => naming to docker.io/cosmopolitain/hello-world                                                                                                                                                 0.0s
+
+hello world
+
+% docker images
+REPOSITORY                  TAG       IMAGE ID       CREATED              SIZE
+cosmopolitain/hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
+```
 
 ### windows 
 ```
@@ -33,31 +75,10 @@ $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/bi
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
 ```
 
-### docker (alpine linux)
-```
-% docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c /application/examples/hello.com
-
-hello world
-```
-
 ### qemu
 ```
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com &&\
-  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/cosmopolitan/examples/hello.com
-
-hello world
-```
-
-#### mac/linux
-```
-$ 
-```
-
-#### docker 
-```
-$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
-  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
-  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/cosmopolitan/examples/hello.com
+  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/hello.com
 
 SeaBIOS (version rel-1.14.0-0-g155821a1990b-prebuilt.qemu.org)
 
@@ -66,7 +87,6 @@ iPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+00F8F290+00EEF290 CA00
 Booting from Hard Disk...
 Boot failed: could not read the boot disk
 
-Booting from Floppy...
 hello world
 ```
 
