@@ -85,7 +85,8 @@ $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/bi
 hello world
 ```
 
-### qemu (boot on bare or virtual machines)
+### qemu
+Use the binary to boot on bare metal or in a virtual machine via qemu
 ```sh
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com &&\
   qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ./hello.com
