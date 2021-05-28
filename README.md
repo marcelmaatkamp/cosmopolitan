@@ -147,6 +147,57 @@ $ docker-compose up --build &&\
   sudo chown -R ${USER} ${PWD}/data/*
 ```
 
+## build options
+```
+$ docker run --rm -ti marcelmaatkamp/cosmopolitan
+
+# build and run everything
+
+  make -j8 -O
+  make -j8 -O MODE=dbg
+  make -j8 -O MODE=opt
+  make -j8 -O MODE=rel
+  make -j8 -O MODE=tiny
+
+# build individual target
+  make -j8 -O o//examples/hello.com
+  o//examples/hello.com
+
+  Hello world
+
+# view source
+  less examples/hello.c
+
+# view binary
+  o//tool/viz/bing.com o//examples/hello.com |
+   o//tool/viz/fold.com
+  
+# view transitive closure of legalese
+  o//tool/viz/bing.com -n o//examples/hello.com |
+   o//tool/viz/fold.com
+
+# basic debugging
+  make -j8 -O MODE=dbg o/dbg/examples/crashreport.com
+  o/dbg/examples/crashreport.com
+  less examples/crashreport.c
+  
+# extremely tiny binaries
+  make -j8 -O MODE=tiny \
+   LDFLAGS+=-s \
+   CPPFLAGS+=-DIM_FEELING_NAUGHTY	\
+   CPPFLAGS+=-DSUPPORT_VECTOR=0b00000001 \
+   o/tiny/examples/hello4.elf
+  ls -hal o/tiny/examples/hello4.elf
+  o/tiny/examples/hello4.elf
+  
+# TROUBLESHOOTING
+  make -j8 -O V=1 o//examples/hello.com
+  make o//examples/life.elf -pn |& less
+
+# SEE ALSO
+  (build/config.mk)[https://github.com/jart/cosmopolitan/blob/master/build/config.mk]
+```
+
 # files
 | examples | dist | release | tiny | debug |
 | --- | --- | --- | --- | --- |
