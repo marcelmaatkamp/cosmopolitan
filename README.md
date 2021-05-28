@@ -67,14 +67,14 @@ hello world
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 cosmopolitan-hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
 ```
-(TBD: it seems 
+(TBD: only the *.dbg seem to work in docker, which is a pity since the tiny binary executable is at least 10 times smaller)
 
 ## multi-arch polyglot binaries
 To showcase that each of these binaries can actually be used to execute on different environments I've uploaded them here on github in [binaries/dist](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist). To use them in each indiviual environment use the following shell scripts and note that it is always the same binary that is being used:
 
 ### windows 
 ```sh
-C:..> curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && hello.com
+C:\> curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && hello.com
 
 hello world
 ```
