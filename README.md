@@ -140,10 +140,10 @@ $ docker run --rm -ti marcelmaatkamp/cosmopolitan
 # TROUBLESHOOTING
   make -j8 -O V=1 o//examples/hello.com
   make o//examples/life.elf -pn |& less
-
-# SEE ALSO
-  [build/config.mk](https://github.com/jart/cosmopolitan/blob/master/build/config.mk)
 ```
+
+## see also
+[build/config.mk](https://github.com/jart/cosmopolitan/blob/master/build/config.mk)
 
 # files
 I have compiled and uploaded all example files in [binaries/](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/):
