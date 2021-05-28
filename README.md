@@ -36,7 +36,7 @@ CMD ["/hello.com"]
 
 #### run container
 ```sh
-  docker run cosmopolitain/hello-world
+% docker run cosmopolitain/hello-world
   
 hello world
 ```
@@ -85,59 +85,6 @@ Booting from Hard Disk...
 Boot failed: could not read the boot disk
 
 hello world
-```
-
-## nesemu
-
-### windows
-```sh
-C:..> curl -sq https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dist/examples/nesemu1.com -o nesemu1.com && nesemu.com
-```
-This binary seems to be not 64-bits compatible!
-
-### docker 
-```sh
-$ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c third_party/sqlite3/sqlite3.com
-
-SQLite version 3.35.5 2021-04-19 18:32:05
-Enter ".help" for usage hints.
-Connected to a transient in-memory database.
-Use ".open FILENAME" to reopen on a persistent database.
-sqlite>
-```
-
-### linux
-```sh
-$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
-  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
-  ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
-
-SQLite version 3.35.5 2021-04-19 18:32:05
-Enter ".help" for usage hints.
-Connected to a transient in-memory database.
-Use ".open FILENAME" to reopen on a persistent database.
-sqlite>
-```
-
-### mac
-```sh
-$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
-  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
-  sh ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
-
-SQLite version 3.35.5 2021-04-19 18:32:05
-Enter ".help" for usage hints.
-Connected to a transient in-memory database.
-Use ".open FILENAME" to reopen on a persistent database.
-sqlite>
-```
-
-# qemu
-(This does not seem to work, I think sqlite is too clever and wants to do something special with the terminal and crashes, but maybe qemu-system-x86_64 has an option to make this work which is something to be tried out)
-```sh
-$ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
-  sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
-  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
 ```
 
 # build
