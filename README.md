@@ -12,74 +12,71 @@ https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d
 These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
 ## hello-world
-The simpelest example: hello world. 
+Let's showcase how to use this container with the simpelest example: hello world. We verify that the binary is succesfully compiled and does what it should do: 'print hello world' and use that binary in a seperate container which can be used by other processes.
 
 ### docker 
-```
+This binary is compiled from (hello.c)[https://github.com/jart/cosmopolitan/blob/master/examples/hello.c] but it could also be your own creation:
+```sh
 $ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c o/examples/hello.com
 
 hello world
 ```
 
 #### Dockerfile
-Since these binaries are statically linked and thus contain everything they need, you can include these binaries into an empty container
-
+Since these binaries are statically linked and thus contain everything in itself they need to function, you can include these binaries into an empty container called called 'scratch'
 ```Dockerfile
 FROM scratch
 COPY binaries/dist/examples/hello.com.dbg /hello.com
 CMD ["/hello.com"]
 ```
 
-#### build
+#### build container
+```sh
+% docker build -t cosmopolitain/hello-world . --no-cache
 ```
-% docker build -t cosmopolitain/hello-world . --no-cache &&\
+
+#### run container
+```sh
   docker run cosmopolitain/hello-world
-
-[+] Building 0.2s (5/5) FINISHED                                                                                                                                                                          
- => [internal] load build definition from Dockerfile                                                                                                                                                 0.0s
- => => transferring dockerfile: 127B                                                                                                                                                                 0.0s
- => [internal] load .dockerignore                                                                                                                                                                    0.0s
- => => transferring context: 2B                                                                                                                                                                      0.0s
- => [internal] load build context                                                                                                                                                                    0.0s
- => => transferring context: 162B                                                                                                                                                                    0.0s
- => [1/1] COPY binaries/tiny/examples/hello.com.dbg /hello.com                                                                                                                                       0.0s
- => exporting to image                                                                                                                                                                               0.0s
- => => exporting layers                                                                                                                                                                              0.0s
- => => writing image sha256:2a76df015807f71644232c4bf164302dbc818125edc903598ced36c3cc581d51                                                                                                         0.0s
- => => naming to docker.io/cosmopolitain/hello-world                                                                                                                                                 0.0s
-
+  
 hello world
+```
 
+#### size of container
+```sh
 % docker images
-REPOSITORY                  TAG       IMAGE ID       CREATED              SIZE
+REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 cosmopolitain/hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
 ```
 
+## Mulitarch Polygot binaries!
+To showcase that each of these binaries can actually be used to execute on different environments I've uploaded them here on github in (binaries/dist)[https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist]. To use them in each indiviual environment use the following shell scripts and note that it is always the same binary that is being used:
+
 ### windows 
-```
+```sh
 C:..> curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && hello.com
 
 hello world
 ```
 
 ### mac
-```
+```sh
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
 
 hello world
 ```
 
 ### linux
-```
+```sh
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com && sh ./hello.com
 
 hello world
 ```
 
-### qemu
-```
+### qemu (boot on bare or virtual machines)
+```sh
 $ curl -sq https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com -o hello.com &&\
-  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/hello.com
+  qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ./hello.com
 
 SeaBIOS (version rel-1.14.0-0-g155821a1990b-prebuilt.qemu.org)
 
@@ -94,13 +91,13 @@ hello world
 ## nesemu
 
 ### windows
-```
+```sh
 C:..> curl -sq https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dist/examples/nesemu1.com -o nesemu1.com && nesemu.com
 ```
 This binary seems to be not 64-bits compatible!
 
 ### docker 
-```
+```sh
 $ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c third_party/sqlite3/sqlite3.com
 
 SQLite version 3.35.5 2021-04-19 18:32:05
@@ -111,7 +108,7 @@ sqlite>
 ```
 
 ### linux
-```
+```sh
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
   ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
@@ -124,7 +121,7 @@ sqlite>
 ```
 
 ### mac
-```
+```sh
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
   sh ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
@@ -138,7 +135,7 @@ sqlite>
 
 # qemu
 (This does not seem to work, I think sqlite is too clever and wants to do something special with the terminal and crashes, but maybe qemu-system-x86_64 has an option to make this work which is something to be tried out)
-```
+```sh
 $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp -r /application/* /data' &&\
   sudo chown -R ${USER} ${PWD}/cosmopolitan &&\
   qemu-system-x86_64 -m 16 -no-reboot -nographic -fda ${PWD}/cosmopolitan/third_party/sqlite3/sqlite3.com
@@ -146,7 +143,7 @@ $ docker run -v ${PWD}/cosmopolitan:/data marcelmaatkamp/cosmopolitan sh -c 'cp 
 
 # build
 If you want to compile the examples yourself just use the following command-line:
-```
+```sh
 $ docker-compose up --build &&\
   sudo chown -R ${USER} ${PWD}/data/*
 ```
