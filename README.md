@@ -24,7 +24,7 @@ COSMOPOLITAN NESEMU1
 ```
 https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d-d8981d7ea7a6.mp4
 
-## 'hello world' example
+## 'hello world'-example
 Let's showcase how to use this container with the simpelest example: [hello world](https://github.com/jart/cosmopolitan/blob/master/examples/hello.c) but it could also be your own creation:. We verify that the binary is succesfully compiled and does what it should do: 'print hello world' and use that binary in a seperate container which can be used by other processes.
 
 ### docker 
@@ -51,12 +51,12 @@ ENTRYPOINT ["/hello.com"]
 
 #### build container
 ```sh
-% docker build -t cosmopolitain-hello-world . 
+% docker build -t cosmopolitan-hello-world . 
 ```
 
 #### run container
 ```sh
-% docker run cosmopolitain-hello-world
+% docker run cosmopolitan-hello-world
   
 hello world
 ```
@@ -65,7 +65,7 @@ hello world
 ```sh
 % docker images
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
-cosmopolitain-hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
+cosmopolitan-hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
 ```
 (TBD: it seems 
 
