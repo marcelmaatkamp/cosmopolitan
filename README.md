@@ -48,8 +48,8 @@ REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 cosmopolitain/hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
 ```
 
-## Mulitarch Polygot binaries!
-To showcase that each of these binaries can actually be used to execute on different environments I've uploaded them here on github in (binaries/dist)[https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist]. To use them in each indiviual environment use the following shell scripts and note that it is always the same binary that is being used:
+## multi-arch polyglot binaries
+To showcase that each of these binaries can actually be used to execute on different environments I've uploaded them here on github in [binaries/dist](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist). To use them in each indiviual environment use the following shell scripts and note that it is always the same binary that is being used:
 
 ### windows 
 ```sh
@@ -95,7 +95,7 @@ $ docker-compose up --build &&\
 ```
 
 ## build options
-```
+```sh
 $ docker run --rm -ti marcelmaatkamp/cosmopolitan
 
 # build and run everything
@@ -146,6 +146,8 @@ $ docker run --rm -ti marcelmaatkamp/cosmopolitan
 ```
 
 # files
+I have compiled and uploaded all example files in [binaries/](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/):
+
 | examples | dist | release | tiny | debug |
 | --- | --- | --- | --- | --- |
 | binaries/dist/examples//date.com | [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dist/examples//date.com) | [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/rel//examples//date.com) | [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/tiny//examples//date.com) | [💾](https://github.com/marcelmaatkamp/cosmopolitan/raw/main/binaries/dbg//examples//date.com) |
