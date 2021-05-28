@@ -51,12 +51,12 @@ ENTRYPOINT ["/hello.com"]
 
 #### build container
 ```sh
-% docker build -t cosmopolitain/hello-world . 
+% docker build -t cosmopolitain-hello-world . 
 ```
 
 #### run container
 ```sh
-% docker run cosmopolitain/hello-world
+% docker run cosmopolitain-hello-world
   
 hello world
 ```
@@ -65,7 +65,7 @@ hello world
 ```sh
 % docker images
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
-cosmopolitain/hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
+cosmopolitain-hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
 ```
 (TBD: it seems 
 
