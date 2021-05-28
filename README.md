@@ -12,10 +12,9 @@ https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d
 These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
 ## hello-world
-Let's showcase how to use this container with the simpelest example: hello world. We verify that the binary is succesfully compiled and does what it should do: 'print hello world' and use that binary in a seperate container which can be used by other processes.
+Let's showcase how to use this container with the simpelest example: [hello world](https://github.com/jart/cosmopolitan/blob/master/examples/hello.c) but it could also be your own creation:. We verify that the binary is succesfully compiled and does what it should do: 'print hello world' and use that binary in a seperate container which can be used by other processes.
 
 ### docker 
-This binary is compiled from (hello.c)[https://github.com/jart/cosmopolitan/blob/master/examples/hello.c] but it could also be your own creation:
 ```sh
 $ docker run --rm -ti marcelmaatkamp/cosmopolitan sh -c o/examples/hello.com
 
