@@ -5,9 +5,9 @@ This is the already compiled build environment for [Cosmopolitan Libc](https://g
 This repository and its resulting docker container compiles the cosmopolitan libraries and all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) in a docker container [marcelmaatkamp/cosmopolitan](https://hub.docker.com/r/marcelmaatkamp/cosmopolitan) where each individual [example binary](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist/examples) can be executed on multiple platforms like linux, mac, windows, FreeBSD, OpenBSD and you can even boot them in qemu or run on bare metal.
 
 # Examples
-These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
+These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and nes emulator) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
-## nesemu
+## nes emulator
 See for example how to run a [nes emulator](https://justine.lol/nesemu1.html):
 ```sh
 $ curl -sq \
