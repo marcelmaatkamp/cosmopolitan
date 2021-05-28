@@ -8,7 +8,7 @@ This repository and its resulting docker container compiles the cosmopolitan lib
 These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and nes emulator) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
 ## nes emulator example
-See as an example how to run a [nes emulator](https://justine.lol/nesemu1.html):
+An exampleL how to run a [nes emulator](https://justine.lol/nesemu1.html) in a terminal in linux/mac:
 ```sh
 $ curl -sq \
    https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/nesemu1.com \
