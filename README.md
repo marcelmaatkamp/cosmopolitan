@@ -142,7 +142,7 @@ $ docker run --rm -ti marcelmaatkamp/cosmopolitan
   make o//examples/life.elf -pn |& less
 
 # SEE ALSO
-  (build/config.mk)[https://github.com/jart/cosmopolitan/blob/master/build/config.mk]
+  [build/config.mk](https://github.com/jart/cosmopolitan/blob/master/build/config.mk)
 ```
 
 # files
