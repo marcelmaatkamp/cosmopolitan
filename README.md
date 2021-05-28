@@ -4,12 +4,25 @@ This is the already compiled build environment for [Cosmopolitan Libc](https://g
 # TL;DR 
 This repository and its resulting docker container compiles the cosmopolitan libraries and all example programs from [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) in a docker container [marcelmaatkamp/cosmopolitan](https://hub.docker.com/r/marcelmaatkamp/cosmopolitan) where each individual [example binary](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist/examples) can be executed on multiple platforms like linux, mac, windows, FreeBSD, OpenBSD and you can even boot them in qemu or run on bare metal.
 
-See for example how to run a [nes emulator](https://justine.lol/nesemu1.html):
-
-https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d-d8981d7ea7a6.mp4
-
 # Examples
 These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and sqlite) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
+
+## nesemu
+See for example how to run a [nes emulator](https://justine.lol/nesemu1.html):
+```sh
+$ curl -sq \
+   https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/nesemu1.com \
+   -o nesemu1.com &&\
+  chmod +x nesemu1.com &&\
+  sh ./nesemu1.com
+  
+COSMOPOLITAN NESEMU1
+
+  [0] zip:usr/share/rom/mario.nes
+  [1] zip:usr/share/rom/tetris.nes
+  [2] zip:usr/share/rom/zelda.nes
+```
+https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d-d8981d7ea7a6.mp4
 
 ## hello-world
 Let's showcase how to use this container with the simpelest example: [hello world](https://github.com/jart/cosmopolitan/blob/master/examples/hello.c) but it could also be your own creation:. We verify that the binary is succesfully compiled and does what it should do: 'print hello world' and use that binary in a seperate container which can be used by other processes.
