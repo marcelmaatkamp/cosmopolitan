@@ -7,7 +7,7 @@ This repository and its resulting docker container compiles the cosmopolitan lib
 # Examples
 These are examples on how to run the executables. In the section [files](#files) you can find all the possible example files. I've described a few examples (hello-world and nes emulator) on how to run on multiple platforms, the rest is more of the same. All of these examples are build with and contained in this docker container.
 
-## nes emulator
+## nes emulator example
 See for example how to run a [nes emulator](https://justine.lol/nesemu1.html):
 ```sh
 $ curl -sq \
@@ -24,7 +24,7 @@ COSMOPOLITAN NESEMU1
 ```
 https://user-images.githubusercontent.com/6911/119561709-ceb2a600-bda5-11eb-964d-d8981d7ea7a6.mp4
 
-## hello-world
+## 'hello world' example
 Let's showcase how to use this container with the simpelest example: [hello world](https://github.com/jart/cosmopolitan/blob/master/examples/hello.c) but it could also be your own creation:. We verify that the binary is succesfully compiled and does what it should do: 'print hello world' and use that binary in a seperate container which can be used by other processes.
 
 ### docker 
@@ -37,14 +37,21 @@ hello world
 #### Dockerfile
 Since these binaries are statically linked and thus contain everything in itself they need to function, you can include these binaries into an empty container called called 'scratch'
 ```Dockerfile
+FROM alpine as alpine
+ADD \
+ https://raw.githubusercontent.com/marcelmaatkamp/cosmopolitan/main/binaries/dist/examples/hello.com.dbg \
+ /hello.com
+RUN \
+ chmod +x /hello.com
+
 FROM scratch
-COPY binaries/dist/examples/hello.com.dbg /hello.com
-CMD ["/hello.com"]
+COPY --from=alpine /hello.com /hello.com
+ENTRYPOINT ["/hello.com"]
 ```
 
 #### build container
 ```sh
-% docker build -t cosmopolitain/hello-world . --no-cache
+% docker build -t cosmopolitain/hello-world . 
 ```
 
 #### run container
@@ -60,6 +67,7 @@ hello world
 REPOSITORY                  TAG       IMAGE ID       CREATED          SIZE
 cosmopolitain/hello-world   latest    b1fb2bc42c1e   6 seconds ago    260kB
 ```
+(TBD: it seems 
 
 ## multi-arch polyglot binaries
 To showcase that each of these binaries can actually be used to execute on different environments I've uploaded them here on github in [binaries/dist](https://github.com/marcelmaatkamp/cosmopolitan/tree/main/binaries/dist). To use them in each indiviual environment use the following shell scripts and note that it is always the same binary that is being used:
