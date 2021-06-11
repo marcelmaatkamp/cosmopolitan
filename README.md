@@ -109,8 +109,77 @@ Boot failed: could not read the boot disk
 hello world
 ```
 
-# build
-If you want to compile the examples yourself just use the following command-line:
+# compile your software 
+If you want to use this container to build your own software use the following Dockerfile as an example:
+
+```Dockerfile
+FROM marcelmaatkamp/cosmopolitan as cosmopolitan
+
+FROM ubuntu
+ENV DEBIAN_FRONTEND=noninteractive
+RUN \
+ apt-get update && apt-get install -yf \
+ make \
+ autoconf \
+ automake \
+ zip \
+ unzip \
+ wget \
+ curl \
+ git \
+ vim \
+ libsdl2-dev \
+ libluajit-5.1-dev \
+ libopenal-dev \
+ libmodplug-dev \
+ libvorbis-dev \
+ libtheora-dev \
+ libmpg123-dev \ 
+ libtool &&\
+ rm -rf /var/lib/apt/lists/*
+
+COPY \
+ --from=cosmopolitan \
+  /cosmopolitan/o/cosmopolitan.h \
+  /cosmopolitan/o/libc/crt/crt.o \
+  /cosmopolitan/o/ape/ape.o \
+  /cosmopolitan/o/ape/ape.lds \
+  /cosmopolitan/o/cosmopolitan.a \
+ /cosmopolitan/
+
+COPY \
+ --from=cosmopolitan\
+ /cosmopolitan/o/third_party/gcc \
+ /cosmopolitan-gcc
+
+RUN \
+ bash -c '\
+ for i in $(ls /cosmopolitan-gcc/bin); \
+ do \
+  filename=${i/x86_64-linux-musl-/}; \
+  ln -s /cosmopolitan-gcc/bin/x86_64-linux-musl-${filename} /usr/local/bin/${filename}; \
+ done;'
+
+RUN \
+ mkdir -p /cosmopolitan-gcc/bin/../x86_64-linux-musl/usr/local &&\
+ git clone \
+  https://github.com/fabriziobertocci/cosmo-include \
+  /usr/local/include
+
+WORKDIR /application
+RUN \
+ git clone https://github.com/love2d/love &&\
+  cd love &&\
+  platform/unix/automagic &&\
+  ./configure \
+   CFLAGS="-I/usr/local/include  -include /cosmopolitan/cosmopolitan.h -g -Os -static -nostdlib -nostdinc -fno-pie -no-pie -mno-red-zone -fno-omit-frame-pointer -pg -mnop-mcount" \
+   CPPFLAGS="-I/usr/local/include -include /cosmopolitan/cosmopolitan.h  -g -Os -static -nostdlib -nostdinc -fno-pie -no-pie -mno-red-zone -fno-omit-frame-pointer -pg -mnop-mcount" \
+   LIBS="-fuse-ld=bfd -Wl,-T,/cosmopolitan/ape.lds -include /cosmopolitan/cosmopolitan.h /cosmopolitan/crt.o /cosmopolitan/ape.o /cosmopolitan/cosmopolitan.a"  &&\
+  make
+```
+
+# compile cosmopolitan (this container)
+If you want to compile the cosmpolitan libraries and examples yourself, just use the following command-line:
 ```sh
 $ docker-compose up --build &&\
   sudo chown -R ${USER} ${PWD}/data/*
