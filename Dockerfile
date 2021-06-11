@@ -24,3 +24,17 @@ RUN \
    make -O MODE=${mode}; \
   done;\
  '
+
+RUN \
+ bash -c '\
+ for i in $(ls /cosmopolitan-gcc/bin); \
+ do \
+  filename=${i/x86_64-linux-musl-/}; \
+  ln -s /cosmopolitan-gcc/bin/x86_64-linux-musl-${filename} /usr/local/bin/${filename}; \
+ done;'
+
+RUN \
+ mkdir -p /cosmopolitan-gcc/x86_64-linux-musl/usr/local &&\
+ git clone \
+  https://github.com/fabriziobertocci/cosmo-include \
+  /usr/local/include
